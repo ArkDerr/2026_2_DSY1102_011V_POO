@@ -1,4 +1,4 @@
-package org.example;
+package org.arriendo;
 
 import java.time.LocalDate;
 

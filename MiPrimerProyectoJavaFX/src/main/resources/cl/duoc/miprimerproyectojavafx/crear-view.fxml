@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cl.duoc.miprimerproyectojavafx.controller.CrearController">
+   <children>
+      <Label layoutX="31.0" layoutY="23.0" text="Crear Persona">
+         <font>
+            <Font name="System Bold" size="30.0" />
+         </font>
+      </Label>
+      <Pane layoutX="402.0" layoutY="341.0" prefHeight="45.0" prefWidth="184.0">
+         <children>
+            <Button fx:id="btnCrearVolver" layoutX="66.0" layoutY="10.0" mnemonicParsing="false" onAction="#onVolverClickAction" text="Volver" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cl.duoc.miprimerproyectojavafx.controller.MenuController">
+<VBox alignment="CENTER" prefHeight="600.0" prefWidth="800.0" spacing="20.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cl.duoc.miprimerproyectojavafx.controller.MenuController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
@@ -22,27 +22,27 @@
                <Insets bottom="10.0" />
             </VBox.margin>
          </Button>
-         <Button mnemonicParsing="false" prefWidth="150.0" text="Listar">
+         <Button fx:id="btnListar" mnemonicParsing="false" onAction="#onListarButtonClick" prefWidth="150.0" text="Listar">
             <VBox.margin>
                <Insets bottom="10.0" />
             </VBox.margin>
          </Button>
-         <Button mnemonicParsing="false" prefWidth="150.0" text="Buscar">
+         <Button fx:id="btnBuscar" mnemonicParsing="false" onAction="#onBuscarButtonClick" prefWidth="150.0" text="Buscar">
             <VBox.margin>
                <Insets bottom="10.0" />
             </VBox.margin>
          </Button>
-         <Button mnemonicParsing="false" prefWidth="150.0" text="Editar">
+         <Button fx:id="btnEditar" mnemonicParsing="false" onAction="#onEditarButtonClick" prefWidth="150.0" text="Editar">
             <VBox.margin>
                <Insets bottom="10.0" />
             </VBox.margin>
          </Button>
-         <Button mnemonicParsing="false" prefWidth="150.0" text="Elimnar">
+         <Button fx:id="btnElimnar" mnemonicParsing="false" onAction="#onEliminarButtonClick" prefWidth="150.0" text="Elimnar">
             <VBox.margin>
                <Insets bottom="10.0" />
             </VBox.margin>
          </Button>
-         <Button fx:id="btnSalir" mnemonicParsing="false" onAction="#onSalirButonClick" prefWidth="150.0" text="Salir" />
+         <Button fx:id="btnSalir" mnemonicParsing="false" onAction="#onSalirButtonClick" prefWidth="150.0" text="Salir" />
       </children>
    </VBox>
 </VBox>

@@ -7,8 +7,15 @@ module cl.duoc.miprimerproyectojavafx {
 
     opens cl.duoc.miprimerproyectojavafx to javafx.fxml;
     exports cl.duoc.miprimerproyectojavafx;
+
     exports cl.duoc.miprimerproyectojavafx.controller;
     opens cl.duoc.miprimerproyectojavafx.controller to javafx.fxml;
+
     exports cl.duoc.miprimerproyectojavafx.util;
     opens cl.duoc.miprimerproyectojavafx.util to javafx.fxml;
+
+    opens cl.duoc.miprimerproyectojavafx.model to javafx.base;
+    exports cl.duoc.miprimerproyectojavafx.model;
+
+
 }

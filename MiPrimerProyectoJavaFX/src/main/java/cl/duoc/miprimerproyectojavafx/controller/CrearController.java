@@ -8,6 +8,7 @@ import cl.duoc.miprimerproyectojavafx.util.Navegacion;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
@@ -60,10 +61,11 @@ public class CrearController implements Initializable {
             }
 
             repository.agregar(nuevaPersona);
-
+            mostrarAlerta(Alert.AlertType.INFORMATION,"Registro Exitoso","Se realizo el registro de manera exitosa.");
             limpiarControles();
 
         } catch (IllegalArgumentException e) {
+            mostrarAlerta(Alert.AlertType.ERROR,"Error de Registro","No se realizo el registro de la persona. Error: " + e.getMessage() );
         }
     }
 
@@ -79,5 +81,13 @@ public class CrearController implements Initializable {
     @FXML
     protected void onLimpiarButtonClick(ActionEvent event) throws IOException {
         limpiarControles();
+    }
+
+    private void mostrarAlerta(Alert.AlertType tipo, String titulo, String mensaje){
+        Alert alert = new Alert(tipo);
+        alert.setTitle(titulo);
+        alert.setHeaderText(null);
+        alert.setContentText(mensaje);
+        alert.showAndWait();
     }
 }

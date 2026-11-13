@@ -57,8 +57,8 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <Button fx:id="btnGuardar" layoutX="223.0" layoutY="441.0" mnemonicParsing="false" text="Guardar" />
-      <Button fx:id="btnEliminar" layoutX="548.0" layoutY="441.0" mnemonicParsing="false" text="Eliminar" />
+      <Button fx:id="btnGuardar" layoutX="223.0" layoutY="441.0" mnemonicParsing="false" onAction="#registrar" text="Guardar" />
+      <Button fx:id="btnEliminar" layoutX="548.0" layoutY="441.0" mnemonicParsing="false" onAction="#eliminar" text="Eliminar" />
       <Label fx:id="lblMensaje" layoutX="50.0" layoutY="537.0" text="EL MENSAJE" />
    </children>
 </AnchorPane>

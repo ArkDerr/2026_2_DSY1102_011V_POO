@@ -23,14 +23,14 @@ public class MaterialRepository {
         revistas = revistaDAO.leer();
     }
 
-    public List<Material> listar() {
+    public List<Material> listar() throws IOException {
         List<Material> todos = new ArrayList<>();
         todos.addAll(libros);
         todos.addAll(revistas);
         return todos;
     }
 
-    public void registar(Material material) throws IOException {
+    public void registrar(Material material) throws IOException {
         if (material instanceof Libro libro) {
             if (libros.stream().anyMatch(x -> libro.getCodigo().equals(x.getCodigo()))) {
                 throw new IllegalArgumentException("Código de libro repetido");

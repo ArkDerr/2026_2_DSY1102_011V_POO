@@ -1,8 +1,15 @@
 [
   {
+<<<<<<< HEAD
     "especial": true,
     "codigo": "2",
     "titulo": "Caras",
     "dias": 1
+=======
+    "especial": false,
+    "codigo": "101",
+    "titulo": "Caras",
+    "dias": 2
+>>>>>>> a422829bbf796b7cd346c974a2b248ae077c6dd0
   }
 ]

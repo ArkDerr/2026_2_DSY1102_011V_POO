@@ -1,5 +1,6 @@
 [
   {
+<<<<<<< HEAD
     "autor": "Valentin",
     "novedad": false,
     "codigo": "12",
@@ -12,5 +13,12 @@
     "codigo": "13",
     "titulo": "Ana Frank",
     "dias": 12
+=======
+    "autor": "Test",
+    "novedad": false,
+    "codigo": "100",
+    "titulo": "Test",
+    "dias": 10
+>>>>>>> a422829bbf796b7cd346c974a2b248ae077c6dd0
   }
 ]

@@ -57,7 +57,11 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
+<<<<<<< HEAD
       <Button fx:id="btnGuardar" layoutX="223.0" layoutY="441.0" mnemonicParsing="false" onAction="#guardar" text="Guardar" />
+=======
+      <Button fx:id="btnGuardar" layoutX="223.0" layoutY="441.0" mnemonicParsing="false" onAction="#registrar" text="Guardar" />
+>>>>>>> a422829bbf796b7cd346c974a2b248ae077c6dd0
       <Button fx:id="btnEliminar" layoutX="548.0" layoutY="441.0" mnemonicParsing="false" onAction="#eliminar" text="Eliminar" />
       <Label fx:id="lblMensaje" layoutX="50.0" layoutY="537.0" text="EL MENSAJE" />
    </children>

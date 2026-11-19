@@ -1,0 +1,16 @@
+[
+  {
+    "autor": "Valentin",
+    "novedad": false,
+    "codigo": "12",
+    "titulo": "Java",
+    "dias": 12
+  },
+  {
+    "autor": "Ana Frank",
+    "novedad": true,
+    "codigo": "13",
+    "titulo": "Ana Frank",
+    "dias": 12
+  }
+]

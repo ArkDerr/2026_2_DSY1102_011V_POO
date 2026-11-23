@@ -70,7 +70,7 @@ public class EquipoBDDAO implements EquipoDAO {
                 }
 
                 if (((Notebook) equipo).estaDisponibleParaReventa()){
-                    extracted(ps);
+                    ps.setInt(7,1);
                 } else {
                     ps.setInt(7,0);
                 }
@@ -103,11 +103,44 @@ public class EquipoBDDAO implements EquipoDAO {
 
     @Override
     public void actualizar(Equipo equipo) {
+        String sql = "UPDATE equipo SET nombre = ?, edad = ?, peso = ?, tipo = ?, marca = ?, diagnosticado = ?, reventa = ?, intesivo = ? WHERE id = ?";
+        try (Connection con = conexionBD.conectar();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setString(1, equipo.getNombre());
+            ps.setInt(2, equipo.getEdad());
+            ps.setDouble(3, equipo.getPeso());
 
+            if (equipo instanceof Notebook notebook) {
+                ps.setString(4, "Notebook");
+                ps.setString(5, ((Notebook) equipo).getMarca());
+                ps.setBoolean(6, ((Notebook) equipo).isDiagnosticado());
+                ps.setBoolean(7, ((Notebook) equipo).estaDisponibleParaReventa());
+                ps.setBoolean(8, false);
+                ps.setInt(9, equipo.getId());
+                ps.executeUpdate();
+            } else if (equipo instanceof Monitor monitor) {
+                ps.setString(4, "Monitor");
+                ps.setString(5, "N/A");
+                ps.setBoolean(6, false);
+                ps.setBoolean(7, false);
+                ps.setBoolean(8, ((Monitor) equipo).isIntensivo());
+                ps.setInt(9, equipo.getId());
+                ps.executeUpdate();
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
     public void eliminar(int id) {
-
+        String sql = "DELETE FROM equipo WHERE id = ?";
+        try (Connection con = conexionBD.conectar();
+        PreparedStatement ps =  con.prepareStatement(sql)){
+            ps.setInt(1,id);
+            ps.executeUpdate();
+        } catch (SQLException ex) {
+            throw new PersistenciaException("No fue posible eliminar");
+        }
     }
 }

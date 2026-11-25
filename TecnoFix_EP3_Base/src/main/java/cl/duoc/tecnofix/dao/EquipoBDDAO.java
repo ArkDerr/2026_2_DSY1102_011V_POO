@@ -17,7 +17,7 @@ public class EquipoBDDAO implements EquipoDAO {
     @Override
     public List<Equipo> obtenerTodos() {
         List<Equipo> equipos = new ArrayList<>();
-        String sql = "SELECT id, nombre, edad, peso, tipo, marca, diagnosticado, reventa, intensivo FROM equipo";
+        String sql = "SELECT id, nombre, edad, peso, tipo, marca, diagnosticado, reventa, intensivo FROM equipos ORDER BY id ASC";
         try(Connection con= conexionBD.conectar();
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery()){
@@ -33,10 +33,15 @@ public class EquipoBDDAO implements EquipoDAO {
                     boolean diagnosticado = rs.getBoolean("diagnosticado");
                     boolean reventa = rs.getBoolean("reventa");
                     Notebook notebook = new Notebook(nombre, edad, peso, marca, diagnosticado);
+                    notebook.setId(id);
+                    if(reventa) {
+                        notebook.marcarDisponibleParaReventa();
+                    }
                     equipos.add(notebook);
                 } else if ("Monitor".equals(tipo)) {
                     boolean intensivo = rs.getBoolean("intensivo");
                     Monitor monitor = new Monitor(nombre, edad, peso, intensivo);
+                    monitor.setId(id);
                     equipos.add(monitor);
                 } else {
                     throw new SQLException("Tipo desconocido: " + tipo);
@@ -50,8 +55,8 @@ public class EquipoBDDAO implements EquipoDAO {
 
     @Override
     public void insertar(Equipo equipo) {
-        String sql = "INSERT INTO equipo " +
-                "(nombre, edad, peso, tipo, marca, diagnosticado, reventa, intesivo) " +
+        String sql = "INSERT INTO equipos " +
+                "(nombre, edad, peso, tipo, marca, diagnosticado, reventa, intensivo) " +
                 "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         try (Connection conexion = conexionBD.conectar();
              PreparedStatement ps = conexion.prepareStatement(sql)) {
@@ -80,8 +85,8 @@ public class EquipoBDDAO implements EquipoDAO {
                 ps.setString(1, equipo.getNombre());
                 ps.setInt(2,equipo.getEdad());
                 ps.setDouble(3,equipo.getPeso());
-                ps.setString(4,"Notebook");
-                ps.setString(5,((Notebook) equipo).getMarca());
+                ps.setString(4,"Monitor");
+                ps.setString(5,("N/A"));
 
                 ps.setInt(6,0);
                 ps.setInt(7,0);
@@ -103,7 +108,7 @@ public class EquipoBDDAO implements EquipoDAO {
 
     @Override
     public void actualizar(Equipo equipo) {
-        String sql = "UPDATE equipo SET nombre = ?, edad = ?, peso = ?, tipo = ?, marca = ?, diagnosticado = ?, reventa = ?, intesivo = ? WHERE id = ?";
+        String sql = "UPDATE equipos SET nombre = ?, edad = ?, peso = ?, tipo = ?, marca = ?, diagnosticado = ?, reventa = ?, intensivo = ? WHERE id = ?";
         try (Connection con = conexionBD.conectar();
              PreparedStatement ps = con.prepareStatement(sql)) {
             ps.setString(1, equipo.getNombre());
@@ -134,7 +139,7 @@ public class EquipoBDDAO implements EquipoDAO {
 
     @Override
     public void eliminar(int id) {
-        String sql = "DELETE FROM equipo WHERE id = ?";
+        String sql = "DELETE FROM equipos WHERE id = ?";
         try (Connection con = conexionBD.conectar();
         PreparedStatement ps =  con.prepareStatement(sql)){
             ps.setInt(1,id);
